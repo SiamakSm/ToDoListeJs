@@ -1,3 +1,5 @@
+messageVide();
+
 document.getElementById("button").addEventListener("click", function () {
     let input = document.getElementById("input").value.trim();
     if (input == "") {
@@ -9,5 +11,25 @@ document.getElementById("button").addEventListener("click", function () {
         ul.appendChild(nLi);
         document.getElementById("input").value = "";
     };
+    messageVide();
+});
+
+
+function messageVide() {
+    if (document.getElementById("myListe").children.length == 0) {
+        document.getElementById("messageV").textContent = "Not Any Tasks Yet !";
+    } else {
+        document.getElementById("messageV").textContent = "";
+    };
+};
+
+
+
+document.getElementById("myListe").addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+        event.target.remove();
+    }
+    messageVide();
+
 });
 
