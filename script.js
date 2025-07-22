@@ -38,11 +38,17 @@ function displayTasks() {
     document.getElementById("input").focus();
 };
 
-document.getElementById("button").addEventListener("click", function () {
+document.getElementById("buttonAdd").addEventListener("click", function () {
     let input = document.getElementById("input").value.trim();
     if (input == "") {
         alert("New task not found!");
     } else {
+        let exists = tasks.some(t => t.text.toLowerCase() === input.toLowerCase());
+        if (exists) {
+            alert("Task already exists!");
+            document.getElementById("input").value = "";
+            return;
+        };
         tasks.push({ id: Date.now(), text: input, status: "Not done" });
         localStorage.setItem("Tasks", JSON.stringify(tasks));
         displayTasks();
