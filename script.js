@@ -1,5 +1,5 @@
-
 let tasks = [];
+
 displayTasks();
 
 function displayTasks() {
@@ -56,10 +56,42 @@ document.getElementById("buttonAdd").addEventListener("click", function () {
     };
 });
 
+(function () {
+    inputSearch = document.getElementById("inputSearch");
+    suggestions = document.getElementById("suggestions");
+    taskSelected = document.getElementById("taskSelected");
+
+    inputSearch.addEventListener("input", autoCompleteChange);
+    suggestions.addEventListener("click", selectItem);
+
+    function autoCompleteChange({ target }) {
+        let data = target.value;
+        suggestions.innerHTML = ``;
+        if (data.length !== 0) {
+            let autoCompleteValues = autoComplete(data);
+            autoCompleteValues.forEach(value => addItem(value.text));
+        };
+    };
+
+    function autoComplete(inputValue) {
+        return tasks.filter(task =>
+            task.text.toLowerCase().includes(inputValue.toLowerCase())
+        );
+    }
 
 
+    function addItem(inputValue) {
+        const li = document.createElement("li");
+        li.textContent = inputValue;
+        suggestions.appendChild(li);
+    };
 
 
+    function selectItem({ target }) {
+        let r = tasks.find(task => task.text.toLowerCase() === target.textContent.toLowerCase());
+        suggestions.textContent = `You have ${r.status} the task ${r.text}`;
 
+    };
 
+})();
 

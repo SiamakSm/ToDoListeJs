@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> To Do liste </title>
-        <h1>To Do liste</h1>
-    </head>
-    <body>
 
-        <input type="texte" id="input" placeholder="New Task!">
-        <button id="buttonAdd"> Add Task </button>
-        <p id="messageV" style="color: gray;"></p>
-        <ul id="myListe">
-        </ul>
+<head>
+    <title> To Do liste </title>
+    <h1>To Do liste</h1>
+</head>
 
-        <script src="script.js"></script>
-    </body>
+<body>
+
+    <input type="texte" id="input" placeholder="New Task!">
+    <button id="buttonAdd"> Add Task </button>
+    <p id="messageV" style="color: gray;"></p>
+    <ul id="myListe">
+    </ul>
+
+    <input type="texte" id="inputSearch" placeholder="Search The tasks">
+    <span> List of the Tasks</span>
+    <ul id="suggestions"></ul>
+    <span id="taskSelected"> </span>
+
+    <script src="index.js"></script>
+</body>
+
 </html>
